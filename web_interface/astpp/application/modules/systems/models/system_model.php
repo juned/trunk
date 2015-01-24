@@ -31,7 +31,7 @@ class System_model extends CI_Model {
         $where = "group_title NOT IN ('asterisk','osc','freepbx')";
         $this->db->where($where);
         if ($flag) {
-            $query = $this->db_model->select("*", "system", "", "id", "ASC", $limit, $start);
+            $query = $this->db_model->select("*", "system", "", "group_title,name", "ASC", $limit, $start);
         } else {
             $query = $this->db_model->countQuery("*", "system", "");
         }
