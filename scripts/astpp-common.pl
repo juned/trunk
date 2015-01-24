@@ -246,7 +246,7 @@ sub get_termination_rates() {
 	}else{
 	      $record = &select_query("Routing","SELECT GROUP_CONCAT(trunk_id) as trunk_id FROM routing WHERE pricelist_id=".$arg{origination_rates_info}->{pricelist_id});
 	      if($record > 0){
-	        $where = "outbound_routes.trunk_id IN (".$record.")";
+	        $where = "outbound_routes.trunk_id IN (".$record->{'trunk_id'}.")";
     	  }else{
 	        &error_xml_without_cdr($arg{destination_number},"TERMINATION_RATES_NOT_FOUND");
 	      }
